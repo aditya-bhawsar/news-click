@@ -14,10 +14,10 @@ class NewsRepository @Inject constructor(val newsDao:NewsDao, val newsApi: NewsA
 
     suspend fun insertNews(article: Article) =  newsDao.insertNews(article)
     suspend fun deleteNews(article: Article) =  newsDao.deleteNews(article)
-    fun getNewsSaved() = newsDao.getAllNews()
-
     suspend fun getNewsHeadlines(countryCode :String,pageNo: Int) = newsApi.getNewsHeadlines(countryCode,pageNo)
     suspend fun getSearchedNews(query: String, pageNo: Int) = newsApi.getSearchedNews(query,pageNo)
+
+    fun getNewsSaved() = newsDao.getAllNews()
 
     fun hasConnection():Boolean{
         val connectivityManager = ctx.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
