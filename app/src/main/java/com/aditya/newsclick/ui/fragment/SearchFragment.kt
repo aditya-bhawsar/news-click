@@ -1,7 +1,5 @@
 package com.aditya.newsclick.ui.fragment
 
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.widget.AbsListView
@@ -19,14 +17,12 @@ import com.aditya.newsclick.api.ResponseWrapper
 import com.aditya.newsclick.databinding.AppInfoViewBinding
 import com.aditya.newsclick.databinding.FragmentSearchBinding
 import com.aditya.newsclick.other.AppInfoData
-import com.aditya.newsclick.other.Constants.Companion.ARTICLE_KEY
 import com.aditya.newsclick.other.Constants.Companion.QUERY_PAGE
 import com.aditya.newsclick.other.Constants.Companion.SEARCH_DELAY
 import com.aditya.newsclick.ui.activity.NewsActivity
 import com.aditya.newsclick.ui.adapter.NewsAdapter
 import com.aditya.newsclick.viewmodels.NewsViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
