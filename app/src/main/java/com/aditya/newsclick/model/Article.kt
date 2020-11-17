@@ -1,10 +1,13 @@
 package com.aditya.newsclick.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 @Entity(tableName = "articles")
+@Parcelize
 data class Article (
     @PrimaryKey(autoGenerate = true)
     var id:Int?= null,
@@ -15,4 +18,4 @@ data class Article (
     val title:String?,
     val url:String?,
     val urlToImage:String?
-):Serializable
+):Parcelable

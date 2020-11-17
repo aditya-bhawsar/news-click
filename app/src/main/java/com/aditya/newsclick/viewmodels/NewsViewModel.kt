@@ -18,7 +18,6 @@ class NewsViewModel @ViewModelInject constructor(private val newsRepository: New
     var breakingNewsPage = 1
     var breakingNewsResponse :NewsResponse? = null
 
-
     val searchNews : MutableLiveData<ResponseWrapper<NewsResponse>> = MutableLiveData()
     var searchNewsPage = 1
     var searchNewsResponse :NewsResponse? = null
@@ -82,6 +81,7 @@ class NewsViewModel @ViewModelInject constructor(private val newsRepository: New
     }
 
     fun getAllNews() = newsRepository.getNewsSaved()
+    fun getArticleIfAny(title: String) = newsRepository.getArticle(title)
 
     private suspend fun safeBreakNewsCall(countryCode: String){
         breakingNews.postValue(ResponseWrapper.Loading())

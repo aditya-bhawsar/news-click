@@ -48,10 +48,8 @@ class SavedFragment : Fragment() {
         }
 
         newsAdapter.setOnItemClickListener {
-            val b = Bundle().apply {
-                putSerializable(ARTICLE_KEY, it)
-            }
-            findNavController().navigate(R.id.action_savedFragment_to_articleFragment,b)
+            val action = SavedFragmentDirections.actionSavedFragmentToArticleFragment(it)
+            findNavController().navigate(action)
         }
 
         val itemTouchHelper = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
@@ -61,9 +59,7 @@ class SavedFragment : Fragment() {
                 val article = newsAdapter.differ.currentList[pos]
                 viewModel.deleteArticle(article)
                 Snackbar.make(requireView(),"Successfully Removed", Snackbar.LENGTH_LONG).apply {
-                    setAction("Undo"){
-                        viewModel.saveArticle(article)
-                    }
+                    setAction("Undo"){ viewModel.saveArticle(article) }
                     show()
                 }
             }

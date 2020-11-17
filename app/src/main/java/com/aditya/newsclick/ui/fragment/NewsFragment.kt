@@ -54,10 +54,8 @@ class NewsFragment : Fragment() {
         }
 
         newsAdapter.setOnItemClickListener {
-            val b = Bundle().apply {
-                putSerializable(ARTICLE_KEY, it)
-            }
-            findNavController().navigate(R.id.action_newsFragment_to_articleFragment, b)
+            val action = NewsFragmentDirections.actionNewsFragmentToArticleFragment(it)
+            findNavController().navigate(action)
         }
 
         viewModel = (activity as NewsActivity).newsViewModel

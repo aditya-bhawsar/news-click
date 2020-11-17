@@ -31,6 +31,7 @@
         android:id="@+id/articleFragment"
         android:name="com.aditya.newsclick.ui.fragment.ArticleFragment"
         android:label="ArticleFragment" >
+
         <argument
             android:name="Article"
             app:argType="com.aditya.newsclick.model.Article" />

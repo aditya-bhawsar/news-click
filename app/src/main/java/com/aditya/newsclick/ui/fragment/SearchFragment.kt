@@ -65,10 +65,8 @@ class SearchFragment : Fragment() {
         }
 
         newsAdapter.setOnItemClickListener {
-            val b = Bundle().apply {
-                putSerializable(ARTICLE_KEY, it)
-            }
-            findNavController().navigate(R.id.action_searchFragment_to_articleFragment,b)
+            val action = SearchFragmentDirections.actionSearchFragmentToArticleFragment(it)
+            findNavController().navigate(action)
         }
 
         viewModel.searchNews.observe(viewLifecycleOwner, Observer { responded->
@@ -140,6 +138,7 @@ class SearchFragment : Fragment() {
 
         searchView = menu.findItem(R.id.search_menu).actionView as SearchView
         searchView.maxWidth = Integer.MAX_VALUE
+        searchView.minimumHeight = Integer.MIN_VALUE
         searchView.queryHint = "Search news here..."
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean { return false }

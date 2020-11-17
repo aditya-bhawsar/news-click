@@ -3,8 +3,10 @@ package com.aditya.newsclick.ui.fragment
 import android.os.Bundle
 import android.view.*
 import android.webkit.WebViewClient
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.aditya.newsclick.BuildConfig
 import com.aditya.newsclick.R
@@ -23,7 +25,7 @@ class ArticleFragment : Fragment() {
 
     private lateinit var bindingDialog: AppInfoViewBinding
 
-    val args:ArticleFragmentArgs by navArgs()
+    private val args by navArgs<ArticleFragmentArgs>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_article,container,false)
@@ -35,9 +37,16 @@ class ArticleFragment : Fragment() {
         (activity as NewsActivity).setSupportActionBar(binding.toolbar)
         (activity as NewsActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
+
         viewModel = (activity as NewsActivity).newsViewModel
 
         val article = args.Article
+
+        article.title?.let { title->
+            viewModel.getArticleIfAny(title).observe(viewLifecycleOwner, Observer {
+                binding.fab.isVisible = (it==null)
+            })
+        }
 
         binding.wvArticle.apply {
             webViewClient = WebViewClient()
