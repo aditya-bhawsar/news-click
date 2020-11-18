@@ -13,4 +13,6 @@
     <string name="search_news">Search News</string>
     <string name="version_name">Version Name :</string>
     <string name="version_code">Version Code :</string>
+    <string name="headlines">Headlines</string>
+    <string name="category">Category</string>
 </resources>
