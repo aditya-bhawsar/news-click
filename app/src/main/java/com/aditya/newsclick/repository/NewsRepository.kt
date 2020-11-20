@@ -16,7 +16,6 @@ class NewsRepository @Inject constructor(val newsDao:NewsDao, val newsApi: NewsA
     suspend fun deleteNews(article: Article) =  newsDao.deleteNews(article)
     suspend fun getNewsHeadlines(countryCode :String,pageNo: Int) = newsApi.getNewsHeadlines(countryCode,pageNo)
     suspend fun getSearchedNews(query: String, pageNo: Int) = newsApi.getSearchedNews(query,pageNo)
-
     fun getArticle(title: String) = newsDao.getArticleIfAny(title)
     fun getNewsSaved() = newsDao.getAllNews()
 
