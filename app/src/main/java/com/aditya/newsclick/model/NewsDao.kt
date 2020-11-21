@@ -12,8 +12,7 @@ interface NewsDao {
     @Query("SELECT * FROM articles WHERE title = :title")
     fun getArticleIfAny(title:String): LiveData<Article?>
 
-    @Delete
-    suspend fun deleteNews(article: Article)
+    @Delete suspend fun deleteNews(article: Article)
 
     @Query("SELECT * FROM articles")
     fun getAllNews():LiveData<List<Article>>
